@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
@@ -11,7 +14,6 @@ app.get('/', (req, res) => {
     res.type('html').send(html);
   }
 });
-
 
 app.post("/submit", (req,res) => {
   const {name} = req.body;
