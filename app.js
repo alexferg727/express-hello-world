@@ -4,7 +4,7 @@ const port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => res.type('html').send(html));
 
-app.get("/submit", (req,res) => {
+app.post("/submit", (req,res) => {
   res
   .type('html')
   .send('hello' + req.query["name"])
