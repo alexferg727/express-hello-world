@@ -23,7 +23,7 @@ const html = `
     <title>Simple form</title>
   </head>
   <body>
-    <form method="GET" action="/submit">
+    <form method="POST" action="/submit">
       <label>
         Name: <input name="name" type="text" />
       </label>
