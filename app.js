@@ -9,9 +9,17 @@ app.get("/", (req, res) => res.type('html').send(html));
 
 app.post("/submit", (req,res) => {
   const {name} = req.body;
+
+  res.cookie('user', name, {
+    httpOnly: true,
+    maxAge: 1000 * 60 * 15 // 15 minutes
+  });
+
   res
   .type('html')
   .send('hello' + name)
+
+  res.send(`Logged in as ${username}`);
 })
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
