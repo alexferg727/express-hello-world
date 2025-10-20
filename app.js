@@ -4,7 +4,13 @@ const port = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => res.type('html').send(html));
+app.get('/', (req, res) => {
+  if (req.cookies.user) {
+    res.send(`Logged in as ${req.cookies.user}`);
+  } else {
+    res.type('html').send(html);
+  }
+});
 
 
 app.post("/submit", (req,res) => {
@@ -19,7 +25,7 @@ app.post("/submit", (req,res) => {
   .type('html')
   .send('hello' + name)
 
-  res.send(`Logged in as ${username}`);
+  
 })
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
