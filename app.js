@@ -19,7 +19,8 @@ app.post("/submit", (req,res) => {
   const {name} = req.body;
 
   res.cookie('user', name, {
-    maxAge: 1000 * 60 * 15 // 15 minutes
+    maxAge: 1000 * 60 * 15, // 15 minutes
+    httpOnly: true
   });
 
   res
